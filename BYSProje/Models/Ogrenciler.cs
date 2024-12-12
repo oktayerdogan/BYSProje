@@ -23,6 +23,8 @@ namespace BYSProje.Models
         public int OgrenciID { get; set; }
         public string Isim { get; set; }
         public string Soyisim { get; set; }
+
+
         public string E_Mail { get; set; }
         public Nullable<int> AkademisyenID { get; set; }
         public Nullable<System.DateTime> KayitTarihi { get; set; }
