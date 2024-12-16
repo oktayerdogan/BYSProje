@@ -11,7 +11,8 @@ namespace BYSProje.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Services.Description;
+
     public partial class Ogrenciler
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +24,8 @@ namespace BYSProje.Models
         public int OgrenciID { get; set; }
         public string Isim { get; set; }
         public string Soyisim { get; set; }
-
-
         public string E_Mail { get; set; }
+        public string Sifre {  get; set; }
         public Nullable<int> AkademisyenID { get; set; }
         public Nullable<System.DateTime> KayitTarihi { get; set; }
     

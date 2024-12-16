@@ -16,7 +16,7 @@ namespace BYSProje
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Giris", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Giris", action = "Index", id = UrlParameter.Optional } // uygulamayı çalıştırdığımız zaman controller ve action tetiklenir.
             );
         }
     }

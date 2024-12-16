@@ -26,17 +26,6 @@
           <Property Name="Kredi" Type="int" />
           <Property Name="Departman" Type="nchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Kullanicilar">
-          <Key>
-            <PropertyRef Name="KullaniciID" />
-          </Key>
-          <Property Name="KullaniciID" Type="int" Nullable="false" />
-          <Property Name="KullaniciAdi" Type="nchar" MaxLength="50" />
-          <Property Name="Sifre" Type="nchar" MaxLength="50" />
-          <Property Name="Rol" Type="nchar" MaxLength="50" />
-          <Property Name="E-Mail" Type="nchar" MaxLength="50" />
-          <Property Name="IlgılıID" Type="int" />
-        </EntityType>
         <EntityType Name="OgrenciDersSecimTablosu">
           <Key>
             <PropertyRef Name="SecimID" />
@@ -107,7 +96,6 @@
         <EntityContainer Name="ProjeErdoModel1StoreContainer">
           <EntitySet Name="AkademisyenTablosu" EntityType="Self.AkademisyenTablosu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dersler" EntityType="Self.Dersler" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OgrenciDersSecimTablosu" EntityType="Self.OgrenciDersSecimTablosu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenciler" EntityType="Self.Ogrenciler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -151,17 +139,6 @@
           <Property Name="Kredi" Type="Int32" />
           <Property Name="Departman" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="OgrenciDersSecimTablosu" Relationship="Self.FK_OgrenciDersSecimTablosu_Dersler" FromRole="Dersler" ToRole="OgrenciDersSecimTablosu" />
-        </EntityType>
-        <EntityType Name="Kullanicilar">
-          <Key>
-            <PropertyRef Name="KullaniciID" />
-          </Key>
-          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
-          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="E_Mail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="IlgılıID" Type="Int32" />
         </EntityType>
         <EntityType Name="OgrenciDersSecimTablosu">
           <Key>
@@ -237,7 +214,6 @@
         <EntityContainer Name="ProjeErdoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AkademisyenTablosu" EntityType="Self.AkademisyenTablosu" />
           <EntitySet Name="Dersler" EntityType="Self.Dersler" />
-          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
           <EntitySet Name="OgrenciDersSecimTablosu" EntityType="Self.OgrenciDersSecimTablosu" />
           <EntitySet Name="Ogrenciler" EntityType="Self.Ogrenciler" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
@@ -280,18 +256,6 @@
                 <ScalarProperty Name="ZorunluMu" ColumnName="ZorunluMu" />
                 <ScalarProperty Name="Kredi" ColumnName="Kredi" />
                 <ScalarProperty Name="Departman" ColumnName="Departman" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kullanicilar">
-            <EntityTypeMapping TypeName="ProjeErdoModel1.Kullanicilar">
-              <MappingFragment StoreEntitySet="Kullanicilar">
-                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
-                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
-                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
-                <ScalarProperty Name="Rol" ColumnName="Rol" />
-                <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
-                <ScalarProperty Name="IlgılıID" ColumnName="IlgılıID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

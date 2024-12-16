@@ -172,9 +172,6 @@
     <Compile Include="Models\Dersler.cs">
       <DependentUpon>BYSpoje.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Kullanicilar.cs">
-      <DependentUpon>BYSpoje.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\OgrenciDersSecimTablosu.cs">
       <DependentUpon>BYSpoje.tt</DependentUpon>
     </Compile>

@@ -4,7 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fadbd432b300445fbf2199ca4130d485" Name="Diagram1" />
+      <Diagram DiagramId="fadbd432b300445fbf2199ca4130d485" Name="Diagram1" >
+        <EntityTypeShape EntityType="ProjeErdoModel.AkademisyenTablosu" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="ProjeErdoModel.Dersler" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="ProjeErdoModel.OgrenciDersSecimTablosu" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ProjeErdoModel.Ogrenciler" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="ProjeErdoModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <AssociationConnector Association="ProjeErdoModel.FK_Ogrenciler_AkademisyenTablosu" />
+        <AssociationConnector Association="ProjeErdoModel.FK_OgrenciDersSecimTablosu_Dersler" />
+        <AssociationConnector Association="ProjeErdoModel.FK_OgrenciDersSecimTablosu_Ogrenciler" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

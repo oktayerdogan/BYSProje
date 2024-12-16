@@ -25,6 +25,7 @@ namespace BYSProje.Models
         public string Baslık { get; set; }
         public string Departman { get; set; }
         public string E_Mail { get; set; }
+        public string Sifre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ogrenciler> Ogrenciler { get; set; }

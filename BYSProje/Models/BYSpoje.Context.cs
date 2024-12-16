@@ -27,7 +27,6 @@ namespace BYSProje.Models
     
         public virtual DbSet<AkademisyenTablosu> AkademisyenTablosu { get; set; }
         public virtual DbSet<Dersler> Dersler { get; set; }
-        public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
         public virtual DbSet<OgrenciDersSecimTablosu> OgrenciDersSecimTablosu { get; set; }
         public virtual DbSet<Ogrenciler> Ogrenciler { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
