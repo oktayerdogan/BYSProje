@@ -89,54 +89,40 @@
 </head>
 <body>
     <div class="container">
-
         <h1>KTU BYS Sayfası</h1>
 
         <div class="button-container">
             <button class="button" onclick="showLoginForm('akademisyen')">Akademisyen Girişi</button>
             <button class="button" onclick="showLoginForm('ogrenci')">Öğrenci Girişi</button>
         </div>
+
         @using (Html.BeginForm("Index", "Giris", FormMethod.Post))
         {
-            <div id="akademisyen-login" class="login-form">
-                <h2>Akademisyen Girişi</h2>
+            <div id="login-form" class="login-form">
+                <h2 id="form-title"></h2>
                 <div class="form-group">
-                    <label for="akademisyen-E-Posta">E-Posta:</label>
-                    <input type="text" id="akademisyen-username" name="akademisyenEposta" placeholder="E-Postanızı giriniz:">
+                    <label for="eposta">E-Posta:</label>
+                    <input type="text" id="eposta" name="eposta" placeholder="E-Postanızı giriniz">
                 </div>
                 <div class="form-group">
-                    <label for="akademisyen-password">Parola:</label>
-                    <input type="password" id="akademisyen-password" name="akademisyenSifre" placeholder="Parolanızı giriniz:">
+                    <label for="sifre">Parola:</label>
+                    <input type="password" id="sifre" name="sifre" placeholder="Parolanızı giriniz">
                 </div>
-                <button class="login-button">Giriş</button>
-            </div>
-
-            <div id="ogrenci-login" class="login-form">
-                <h2>Öğrenci Girişi</h2>
-                <div class="form-group">
-                    <label for="ogrenci-E-Posta">E-Posta:</label>
-                    <input type="text" id="ogrenci-username" name="ogrenciEposta" placeholder="E-Postanızı giriniz:">
-                </div>
-                <div class="form-group">
-                    <label for="ogrenci-password">Parola:</label>
-                    <input type="password" id="ogrenci-password" name="ogrenciSifre" placeholder="Parolanızı giriniz:">
-                </div>
-                <button class="login-button">Giriş</button>
+                <button type="submit" class="login-button">Giriş</button>
+                <br /><br />
+                <p>@ViewBag.HataMesaji</p>
             </div>
         }
     </div>
-    
+
     <script>
         function showLoginForm(type) {
-            // Tüm formları gizle
-            document.getElementById('akademisyen-login').style.display = 'none';
-            document.getElementById('ogrenci-login').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
 
-            // Seçilen formu göster
             if (type === 'akademisyen') {
-                document.getElementById('akademisyen-login').style.display = 'block';
+                document.getElementById('form-title').innerText = 'Akademisyen Girişi';
             } else if (type === 'ogrenci') {
-                document.getElementById('ogrenci-login').style.display = 'block';
+                document.getElementById('form-title').innerText = 'Öğrenci Girişi';
             }
         }
     </script>
