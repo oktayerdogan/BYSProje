@@ -85,6 +85,12 @@
             .login-button:hover {
                 background-color: #218838;
             }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -92,38 +98,50 @@
         <h1>KTU BYS Sayfası</h1>
 
         <div class="button-container">
-            <button class="button" onclick="showLoginForm('akademisyen')">Akademisyen Girişi</button>
-            <button class="button" onclick="showLoginForm('ogrenci')">Öğrenci Girişi</button>
+            <button class="button" onclick="showLoginForm('Akademisyen')">Akademisyen Girişi</button>
+            <button class="button" onclick="showLoginForm('Ogrenci')">Öğrenci Girişi</button>
         </div>
 
         @using (Html.BeginForm("Index", "Giris", FormMethod.Post))
         {
             <div id="login-form" class="login-form">
-                <h2 id="form-title"></h2>
+                <h2 id="form-title">Giriş Yap</h2>
+                <input type="hidden" id="kullaniciTuru" name="kullaniciTuru" />
+
                 <div class="form-group">
                     <label for="eposta">E-Posta:</label>
-                    <input type="text" id="eposta" name="eposta" placeholder="E-Postanızı giriniz">
+                    <input type="text" id="eposta" name="eposta" placeholder="E-Postanızı giriniz" required />
                 </div>
+
                 <div class="form-group">
                     <label for="sifre">Parola:</label>
-                    <input type="password" id="sifre" name="sifre" placeholder="Parolanızı giriniz">
+                    <input type="password" id="sifre" name="sifre" placeholder="Parolanızı giriniz" required />
                 </div>
+
                 <button type="submit" class="login-button">Giriş</button>
-                <br /><br />
-                <p>@ViewBag.HataMesaji</p>
+
+                @if (!string.IsNullOrEmpty(ViewBag.HataMesaji))
+                {
+                    <p class="error-message">@ViewBag.HataMesaji</p>
+                }
             </div>
         }
     </div>
 
     <script>
         function showLoginForm(type) {
+            // Formu göster
             document.getElementById('login-form').style.display = 'block';
 
-            if (type === 'akademisyen') {
+            // Form başlığını güncelle
+            if (type === 'Akademisyen') {
                 document.getElementById('form-title').innerText = 'Akademisyen Girişi';
-            } else if (type === 'ogrenci') {
+            } else if (type === 'Ogrenci') {
                 document.getElementById('form-title').innerText = 'Öğrenci Girişi';
             }
+
+            // Kullanıcı türünü gizli inputa ata
+            document.getElementById('kullaniciTuru').value = type;
         }
     </script>
 </body>
