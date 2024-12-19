@@ -36,7 +36,7 @@ namespace BYSProje.Controllers
                     Session["Rol"] = "Akademisyen";
 
                     ViewBag.HataMesaji = "Girdiğiniz bilgiler başarılı (Akademisyen).";
-                    return RedirectToAction("AkademisyenDashboard", "Home"); // Akademisyen yönlendirmesi
+                    return RedirectToAction("Index", "Akademisyen");
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace BYSProje.Controllers
                     Session["Rol"] = "Ogrenci";
 
                     ViewBag.HataMesaji = "Girdiğiniz bilgiler başarılı (Öğrenci).";
-                    return RedirectToAction("OgrenciDashboard", "Home"); // Öğrenci yönlendirmesi
+                    return RedirectToAction("Index", "Ogrenci"); // Öğrenci yönlendirmesi
                 }
                 else
                 {
