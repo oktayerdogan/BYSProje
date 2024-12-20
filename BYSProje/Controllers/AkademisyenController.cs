@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using BYSProje.Models;
 
+
 namespace BYSProje.Controllers
 {
     public class AkademisyenController : Controller
