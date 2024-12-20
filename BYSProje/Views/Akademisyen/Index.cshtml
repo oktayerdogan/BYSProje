@@ -1,8 +1,97 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/sharedAkademisyen/_LayoutAkademisyen.cshtml";
-}
+﻿<h2 class="text-center my-4 text-primary">Hoşgeldiniz, @ViewBag.IsimSoyisim</h2>
 
-<h2>Index</h2>
+<div class="container">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Akademisyen Bilgileri</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Bilgi</th>
+                        <th>Değer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>İsim-Soyisim</strong></td>
+                        <td>@ViewBag.IsimSoyisim</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Başlık</strong></td>
+                        <td>@ViewBag.Baslik</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Departman</strong></td>
+                        <td>@ViewBag.Departman</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E-Mail</strong></td>
+                        <td>@ViewBag.Email</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Danışmanlık Yapılan Öğrenciler</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Öğrenci ID</th>
+                        <th>İsim</th>
+                        <th>Soyisim</th>
+                        <th>E-Mail</th>
+                        <th>Kayıt Tarihi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ogrenci in ViewBag.Ogrenciler)
+                    {
+                        <tr>
+                            <td>@ogrenci?.OgrenciID</td>
+                            <td>@ogrenci?.Isim</td>
+                            <td>@ogrenci?.Soyisim</td>
+                            <td>@ogrenci?.Email</td>
+                            <td>@ogrenci?.KayitTarih.ToString("yyyy-MM-dd")</td> <!-- Tarih formatını istediğiniz gibi ayarlayabilirsiniz -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 4 CDN -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom Styling for the Table -->
+<style>
+    .table th, .table td {
+        padding: 12px;
+        text-align: center;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        margin-top: 30px;
+    }
+
+    .card-header {
+        background-color: #007bff;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+</style>

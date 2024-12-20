@@ -238,6 +238,7 @@
     <Content Include="Views\Ogrenci\Index.cshtml" />
     <Content Include="Views\sharedAkademisyen\_LayoutAkademisyen.cshtml" />
     <Content Include="Views\Akademisyen\Index.cshtml" />
+    <Content Include="Views\Akademisyen\Anasayfa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,35 +8,6 @@ namespace BYSProje.Controllers
     {
         private readonly ProjeErdoEntities db = new ProjeErdoEntities();
 
-        // Akademisyen giriş işlemi
-        [HttpPost]
-        public ActionResult Index(string eposta, string sifre)
-        {
-            if (string.IsNullOrWhiteSpace(eposta) || string.IsNullOrWhiteSpace(sifre))
-            {
-                ViewBag.HataMesaji = "E-posta ve şifre alanları boş bırakılamaz.";
-                return RedirectToAction("Index", "Giris");
-            }
-
-            // Akademisyen tablosunda e-posta ve şifre kontrolü
-            var akademisyen = db.AkademisyenTablosu.FirstOrDefault(a => a.E_Mail == eposta && a.Sifre == sifre);
-
-            if (akademisyen != null)
-            {
-                // Giriş başarılı, session bilgilerini ayarla
-                Session["KullaniciAdi"] = akademisyen.Isim_Soyisim;
-                Session["KullaniciID"] = akademisyen.AkademisyenID;
-                Session["Rol"] = "Akademisyen";
-
-                // Başarılı girişten sonra Views/Akademisyen/Index.cshtml sayfasına yönlendir
-                return RedirectToAction("Index", "Akademisyen");
-            }
-
-            // Giriş başarısız
-            ViewBag.HataMesaji = "E-posta veya şifre yanlış.";
-            return RedirectToAction("Index", "Giris");
-        }
-
         // Akademisyen için özel index sayfası
         public ActionResult Index()
         {
@@ -45,6 +16,42 @@ namespace BYSProje.Controllers
             {
                 return RedirectToAction("Index", "Giris");
             }
+
+            // AkademisyenID'yi session'dan al
+            int akademisyenId = (int)Session["KullaniciID"];
+
+            // Akademisyen bilgilerini veritabanından al
+            var akademisyenBilgileri = db.AkademisyenTablosu
+                .Where(a => a.AkademisyenID == akademisyenId)
+                .Select(a => new
+                {
+                    IsimSoyisim = a.Isim_Soyisim,
+                    Baslik = a.Baslık,
+                    Departman = a.Departman,
+                    Email = a.E_Mail
+                })
+                .FirstOrDefault();
+
+            // Akademisyene bağlı öğrencileri veritabanından al
+            var ogrenciler = db.Ogrenciler
+                .Where(o => o.AkademisyenID == akademisyenId)
+                .Select(o => new
+                {
+                    OgrenciID = o.OgrenciID,
+                    IsimSoyisim = o.Isim,
+                    Soyisim = o.Soyisim,
+                    Email = o.E_Mail
+                })
+                .ToList();
+
+            // Akademisyen bilgilerini ViewBag'e atıyoruz
+            ViewBag.IsimSoyisim = akademisyenBilgileri?.IsimSoyisim;
+            ViewBag.Baslik = akademisyenBilgileri?.Baslik;
+            ViewBag.Departman = akademisyenBilgileri?.Departman;
+            ViewBag.Email = akademisyenBilgileri?.Email;
+
+            // Öğrencileri ViewBag'e atıyoruz
+            ViewBag.Ogrenciler = ogrenciler;
 
             return View();
         }

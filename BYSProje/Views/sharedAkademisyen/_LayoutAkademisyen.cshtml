@@ -1,63 +1,35 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
+﻿<!DOCTYPE html>
+<html lang="tr">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>_LayoutAkademisyen</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - BYS Projesi</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-
-    @{
-        Layout = null;
-    }
-
-    <!DOCTYPE html>
-
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Öğrenci Bilgi Sayfası</title>
-        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-        <script src="~/Scripts/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Öğrenci Bilgi Sayfası</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li class="nav-item">
-                            @Html.ActionLink("Anasayfa", "Index", "Akademisyen", new { }, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Notlar", "notlar", "Akademisyen", new { }, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Ders Seçme akademisyen", "dersSecim", "Akademisyen", new { }, new { @class = "nav-link" })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Akademisyenle iletişim", "iletisim", "Akademisyen", new { }, new { @class = "nav-link" })
-                        </li>
-
-                    </ul>
-
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Akademisyen")">BYS Akademisyen Paneli</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Anasayfa", "Index", "Akademisyen", null, new { @class = "nav-link" })
+                    </li>
+                </ul>
             </div>
-        </nav>
-        <main role="main" class="container">
-            @RenderBody()
-        </main>
-    </body>
-</html>
+        </div>
+    </nav>
 
+    <main role="main" class="container mt-4">
+        @RenderBody()
+    </main>
+
+    <footer class="footer bg-dark text-center text-white py-3">
+        <p>© 2024 BYS Projesi - Tüm Hakları Saklıdır.</p>
+    </footer>
 </body>
 </html>
