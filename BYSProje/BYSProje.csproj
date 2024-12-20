@@ -180,6 +180,7 @@
     <Compile Include="Models\Ogrenciler.cs">
       <DependentUpon>BYSpoje.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OgrencilerDto.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>BYSpoje.tt</DependentUpon>
     </Compile>

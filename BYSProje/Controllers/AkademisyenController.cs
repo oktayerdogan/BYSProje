@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using BYSProje.Models;
 
-
 namespace BYSProje.Controllers
 {
     public class AkademisyenController : Controller
@@ -36,14 +35,14 @@ namespace BYSProje.Controllers
             // Akademisyene bağlı öğrencileri veritabanından al
             var ogrenciler = db.Ogrenciler
                 .Where(o => o.AkademisyenID == akademisyenId)
-                .Select(o => new
+                .Select(o => new OgrencilerDto()
                 {
                     OgrenciID = o.OgrenciID,
-                    IsimSoyisim = o.Isim,
+                    Isim = o.Isim,
                     Soyisim = o.Soyisim,
-                    Email = o.E_Mail
+                    E_Mail = o.E_Mail
                 })
-                .ToList();
+          .ToList();
 
             // Akademisyen bilgilerini ViewBag'e atıyoruz
             ViewBag.IsimSoyisim = akademisyenBilgileri?.IsimSoyisim;

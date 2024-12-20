@@ -1,4 +1,5 @@
-﻿<h2 class="text-center my-4 text-primary">Hoşgeldiniz, @ViewBag.IsimSoyisim</h2>
+﻿
+<h2 class="text-center my-4 text-primary">Hoşgeldiniz, @ViewBag.IsimSoyisim</h2>
 
 <div class="container">
     <div class="card shadow-sm">
@@ -47,18 +48,17 @@
                         <th>İsim</th>
                         <th>Soyisim</th>
                         <th>E-Mail</th>
-                        <th>Kayıt Tarihi</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var ogrenci in ViewBag.Ogrenciler)
+                    @foreach (var ogrenci in (List<BYSProje.Models.OgrencilerDto>)ViewBag.Ogrenciler)
                     {
                         <tr>
-                            <td>@ogrenci?.OgrenciID</td>
-                            <td>@ogrenci?.Isim</td>
-                            <td>@ogrenci?.Soyisim</td>
-                            <td>@ogrenci?.Email</td>
-                            <td>@ogrenci?.KayitTarih.ToString("yyyy-MM-dd")</td> <!-- Tarih formatını istediğiniz gibi ayarlayabilirsiniz -->
+                            <td>@ogrenci.OgrenciID</td>
+                            <td>@ogrenci.Isim</td>
+                            <td>@ogrenci.Soyisim</td>
+                            <td>@ogrenci.E_Mail</td>
                         </tr>
                     }
                 </tbody>
